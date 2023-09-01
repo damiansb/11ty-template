@@ -1,0 +1,93 @@
+$peixe-helper-background-color: #333 !default;
+
+.helper {
+    font-size: 14px !important;
+    color: #fff !important;
+    padding: 10px 15px !important;
+    background: $peixe-helper-background-color;
+    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    cursor: help;
+
+    em {
+        font-style: normal;
+        text-decoration: underline;
+    }
+
+    &.arrow-left:after {
+        right: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &.arrow-left:after {
+        border-color: rgba(51, 51, 51, 0);
+        border-right-color: $peixe-helper-background-color;
+        border-width: 6px;
+        top: 50%;
+        margin-top: -6px;
+    }
+
+    &.arrow-bottom:after {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &.arrow-bottom:after {
+        border-color: rgba(51, 51, 51, 0);
+        border-top-color: $peixe-helper-background-color;
+        border-width: 6px;
+        left: 50%;
+        margin-left: -6px;
+    }
+
+    &.arrow-right:after {
+        left: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &.arrow-right:after {
+        border-color: rgba(51, 51, 51, 0);
+        border-left-color: $peixe-helper-background-color;
+        border-width: 6px;
+        top: 50%;
+        margin-top: -6px;
+    }
+
+    &.arrow-top:after {
+        bottom: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &.arrow-top:after {
+        border-color: rgba(51, 51, 51, 0);
+        border-bottom-color: $peixe-helper-background-color;
+        border-width: 6px;
+        left: 50%;
+        margin-left: -6px;
+    }
+
+    *:last-child {
+        margin-bottom: 0 !important;
+    }
+}

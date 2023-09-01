@@ -1,0 +1,39 @@
+$bootstrap-directions: (t: 'top', e: 'right', b: 'bottom', s: 'left', );
+$font-sizes: ('10', '12', '14', '16', '18', '20', '24', '28', '30', '32', '36', '40', '42', '48', '60', '72', );
+
+@each $slug,
+$breakpoint-min-width in $grid-breakpoints {
+
+    @media (min-width: $breakpoint-min-width) {
+
+        $bp: '';
+
+        @if ($slug=='xs') {}
+
+        @else {
+            $bp: -#{$slug};
+        }
+
+        /* *********************************************
+			Class declarations start here.
+		********************************************** */
+
+        .bleed-left#{$bp} {
+            padding-left: 3000px !important;
+            margin-left: -3000px !important;
+        }
+
+        .bleed-right#{$bp} {
+            padding-right: 3000px !important;
+            margin-right: -3000px !important;
+        }
+
+        //font sizes
+        @each $size in $font-sizes {
+
+            .font#{$bp}-#{$size} {
+                font-size: #{$size}px !important;
+            }
+        }
+    }
+}

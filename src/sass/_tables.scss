@@ -1,0 +1,157 @@
+table {
+
+    //styles for responsive tables
+    &.responsive {
+        display: block;
+
+        thead,
+        tfoot {
+            display: none;
+        }
+
+        tbody {
+            display: block;
+
+            tr {
+                display: block;
+                width: 100%;
+
+                td {
+                    display: grid;
+                    gap: 1rem;
+                    grid-template-columns: 12ch auto;
+
+                    &:last-child {
+                        margin-bottom: 2rem;
+                        border-bottom: 1px solid $primary;
+
+                        &:has(.list-controls) {
+                            grid-template-columns: 1fr;
+
+                            &::before {
+                                content: none;
+                            }
+                        }
+                    }
+
+                    &::before {
+                        content: attr(data-heading);
+                        font-weight: $font-weight-bold;
+                        color: $gray-600;
+                    }
+                }
+            }
+        }
+    }
+
+    //styles for the list tables
+    &.list {
+        border-collapse: separate;
+        border-spacing: 0;
+
+        thead {
+            th {
+                background: linear-gradient(transparent 50%, $gray-300);
+                white-space: nowrap;
+            }
+
+            a {
+                color: $gray-600;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            th.active {
+                a {
+                    color: $gray-900;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    border-top: 1px solid transparent;
+                    border-bottom: 1px solid $gray-300;
+
+                    &:first-child {
+                        border-left: 1px solid transparent;
+                    }
+
+                    &:last-child {
+                        border-right: 1px solid transparent;
+                    }
+                }
+            }
+        }
+
+        tfoot {
+            td {
+                background: linear-gradient($gray-200 10%, $gray-100);
+            }
+        }
+
+    }
+
+    .list-controls {
+        white-space: nowrap;
+    }
+
+}
+
+// Styles for larger screens behave like a traditional table
+
+@include media-breakpoint-up(xl) {
+
+    table {
+
+        &.list {
+            tbody {
+                tr {
+                    &:hover {
+                        td {
+                            border-color: $primary !important;
+                            background-color: $gray-100;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.responsive {
+            display: table;
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            tbody {
+                display: table-row-group;
+
+                tr {
+                    display: table-row;
+
+                    td {
+                        display: table-cell;
+                        gap: 0;
+
+                        &:last-child {
+                            margin-bottom: 2rem;
+                            border-bottom-color: inherit;
+                        }
+
+                        &::before {
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
